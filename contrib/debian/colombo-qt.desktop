@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Colombo Core
+Comment=Connect to the Colombo P2P Network
+Comment[de]=Verbinde mit dem Colombo peer-to-peer Netzwerk
+Comment[fr]=Colombo, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Colombo, eşten eşe kriptografik sanal para birimi
+Exec=colombo-qt %u
+Terminal=false
+Type=Application
+Icon=colombo128
+MimeType=x-scheme-handler/colombo;
+Categories=Office;Finance;

@@ -1,0 +1,22 @@
+[Unit]
+Description=Colombo's distributed currency daemon
+After=network.target
+
+[Service]
+User=colombo
+Group=colombo
+
+Type=forking
+PIDFile=/var/lib/colombod/colombod.pid
+ExecStart=/usr/bin/colombod -daemon -pid=/var/lib/colombod/colombod.pid \
+-conf=/etc/colombo/colombo.conf -datadir=/var/lib/colombod -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

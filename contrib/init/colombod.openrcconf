@@ -1,0 +1,33 @@
+# /etc/conf.d/colombod: config file for /etc/init.d/colombod
+
+# Config file location
+#CLMD_CONFIGFILE="/etc/colombo/colombo.conf"
+
+# What directory to write pidfile to?  (created and owned by $CLMD_USER)
+#CLMD_PIDDIR="/var/run/colombod"
+
+# What filename to give the pidfile
+#CLMD_PIDFILE="${CLMD_PIDDIR}/colombod.pid"
+
+# Where to write colombod data (be mindful that the blockchain is large)
+#CLMD_DATADIR="/var/lib/colombod"
+
+# User and group to own colombod process
+#CLMD_USER="colombo"
+#CLMD_GROUP="colombo"
+
+# Path to colombod executable
+#CLMD_BIN="/usr/bin/colombod"
+
+# Nice value to run colombod under
+#CLMD_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#CLMD_OPTS=""
+
+# The timeout in seconds OpenRC will wait for colombod to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+CLMD_SIGTERM_TIMEOUT=60

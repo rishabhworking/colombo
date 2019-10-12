@@ -1,0 +1,67 @@
+#!/bin/bash
+#
+#  colombod The colombo core server.
+#
+#
+# chkconfig: 345 80 20
+# description: colombod
+# processname: colombod
+#
+
+# Source function library.
+. /etc/init.d/functions
+
+# you can override defaults in /etc/sysconfig/colombod, see below
+if [ -f /etc/sysconfig/colombod ]; then
+        . /etc/sysconfig/colombod
+fi
+
+RETVAL=0
+
+prog=colombod
+# you can override the lockfile via CLMD_LOCKFILE in /etc/sysconfig/colombod
+lockfile=${CLMD_LOCKFILE-/var/lock/subsys/colombod}
+
+# colombod defaults to /usr/bin/colombod, override with CLMD_BIN
+colombod=${CLMD_BIN-/usr/bin/colombod}
+
+# colombod opts default to -disablewallet, override with CLMD_OPTS
+colombod_opts=${CLMD_OPTS--disablewallet}
+
+start() {
+    echo -n $"Starting $prog: "
+    daemon $DAEMONOPTS $colombod $colombod_opts
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && touch $lockfile
+    return $RETVAL
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && rm -f $lockfile
+    return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status $prog
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: service $prog {start|stop|status|restart}"
+        exit 1
+        ;;
+esac

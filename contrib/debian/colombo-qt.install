@@ -1,0 +1,6 @@
+usr/local/bin/colombo-qt usr/bin
+share/pixmaps/colombo32.xpm usr/share/pixmaps
+share/pixmaps/colombo16.xpm usr/share/pixmaps
+share/pixmaps/colombo128.png usr/share/pixmaps
+debian/colombo-qt.desktop usr/share/applications
+debian/colombo-qt.protocol usr/share/kde4/services/
